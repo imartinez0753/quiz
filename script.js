@@ -14,6 +14,7 @@
 // make a button with a timer
 
 //all variables will go here
+
 var timerEl = document.getElementById("timer");
 var cardText = document.querySelector(".card-text");
 var btn1 = document.getElementById("btn1");
@@ -29,7 +30,8 @@ var li1 = document.createElement("li");
 var li2 = document.createElement("li");
 var li3 = document.createElement("li");
 var li4 = document.createElement("li");
-questArr = [
+var score = 0;
+var questArr = [
 	(questObj1 = {
 		question: "some question",
 		answer1: true,
@@ -114,10 +116,10 @@ li4.textContent = "ouch";
 
 //attributes
 listEl.setAttribute("class", "col-sm btn btn-primary my-2");
-li1.setAttribute("class", "col-sm btn btn-primary my-2");
-li2.setAttribute("class", "col-sm btn btn-primary my-2");
-li3.setAttribute("class", "col-sm btn btn-primary my-2");
-li4.setAttribute("class", "col-sm btn btn-primary my-2");
+li1.setAttribute("class", "col-sm btn btn-primary my-2 button");
+li2.setAttribute("class", "col-sm btn btn-primary my-2 button");
+li3.setAttribute("class", "col-sm btn btn-primary my-2 button");
+li4.setAttribute("class", "col-sm btn btn-primary my-2 button");
 
 // all  css and html influence go here
 
@@ -148,23 +150,50 @@ function addQuestions() {
 	listEl.appendChild(li4);
 }
 
-function QuestionAssign() {
-	//console.log(questArr[0].question);
-	cheese.innerHTML = questArr[i].question;
-	li1 = questArr[i].answer1;
-	li2 = questArr[i].answer2;
-	li3 = questArr[i].answer3;
-	li4 = questArr[i].answer4;
-}
+// function QuestionAssign() {
+// 	//console.log(questArr[0].question);
+// 	cheese.innerHTML = questArr[i].question;
+// 	li1.innerHTML = questArr[i].answer1;
+// 	li2.innerHTML = questArr[i].answer2;
+// 	li3.innerHTML = questArr[i].answer3;
+// 	li4.innerHTML = questArr[i].answer4;
+// }
+
+// all event listener will go here
+btn1.addEventListener("click", function () {
+	timeStart();
+	loopQuestion();
+	addQuestions();
+	// QuestionAssign();
+	btn1.remove();
+});
 
 function loopQuestion() {
 	for (var i = 0; i < questArr.length; i++) {
 		var result = "";
 		result = questArr[i];
 		console.log(result);
+		cheese.innerHTML = questArr[i].question;
+		li1.innerHTML = questArr[i].answer1;
+		li2.innerHTML = questArr[i].answer2;
+		li3.innerHTML = questArr[i].answer3;
+		li4.innerHTML = questArr[i].answer4;
 		return result;
 	}
 }
+
+// $(".button").on("click, funciton()");
+
+listEl.addEventListener("click", function () {
+	console.log("on your way");
+		if (this. === true){
+	score += 1
+		}
+		else{
+			secondsLeft -= 10;
+		}
+	loopQuestion();
+});
 
 console.log(questArr[0].key[0]);
 // console.log(result);
