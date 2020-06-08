@@ -16,102 +16,85 @@
 //all variables will go here
 
 var timerEl = document.getElementById("timer");
-var cardText = document.querySelector(".card-text");
+var finalScore = document.getElementById("final");
+// var cardText = document.querySelector(".card-text");
 var btn1 = document.getElementById("btn1");
-var btn2 = document.getElementById("btn2");
-var btn3 = document.getElementById("btn3");
+// var btn2 = document.getElementById("btn2");
+// var btn3 = document.getElementById("btn3");
+var score = document.getElementById("score");
 var secondsLeft = 120;
-var cheese = document.getElementById("start");
-var questions = ["quest1", "quest2", "quest3", "quest4"];
-var userAnswers = [];
-var answers = ["answer1", "answer2", "answer3", "answer4"];
+var start = document.getElementById("start");
+// var questions = ["quest1", "quest2", "quest3", "quest4"];
+// var userAnswers = [];
+// var answers = ["answer1", "answer2", "answer3", "answer4"];
 var listEl = document.createElement("ul");
 var li1 = document.createElement("li");
 var li2 = document.createElement("li");
 var li3 = document.createElement("li");
 var li4 = document.createElement("li");
-var score = 0;
+var scoreEl = 0;
+var questNum = 0;
 var questArr = [
 	(questObj1 = {
-		question: "some question",
+		question: "first question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer1", "answer2", "answer3"],
 	}),
 	(questObj2 = {
-		question: "some question",
+		question: "second question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer4", "answer5", "answer6"],
 	}),
-	(questObj3 = {
-		question: "some question",
+	{
+		question: "third question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer28", "answer29", "answer30"],
+	},
+	(questObj3 = {
+		question: "forth question",
+		answer1: true,
+		answer2: ["answer7", "answer8", "answer9"],
 	}),
 	(questObj4 = {
-		question: "some question",
+		question: "fifth question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer10", "answer11", "answer12"],
 	}),
 	(questObj5 = {
-		question: "some question",
+		question: "sixth question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer13", "answer14", "answer15"],
 	}),
 	(questObj6 = {
-		question: "some question",
+		question: "seventh question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer16", "answer17", "answer18"],
 	}),
 	(questObj7 = {
-		question: "some question",
+		question: "eigth question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer19", "answer20", "answer21"],
 	}),
 	(questObj8 = {
-		question: "some question",
+		question: "ninth question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer22", "answer23", "answer24"],
 	}),
 	(questObj9 = {
-		question: "some question",
+		question: "tenth question",
 		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
-	}),
-	(questObj10 = {
-		question: "some question",
-		answer1: true,
-		answer2: false,
-		answer3: false,
-		answer4: false,
+		answer2: ["answer25", "answer26", "answer27"],
 	}),
 ];
-// console.log(questArr[0].question);
 
 //text content
-cheese.textContent = "press start to begin";
+start.textContent = "press start to begin";
 btn1.textContent = "start";
-li1.textContent = "hello";
-li2.textContent = "world";
-li3.textContent = "pain";
-li4.textContent = "ouch";
+// li1.textContent = "hello";
+// li2.textContent = "world";
+// li3.textContent = "pain";
+// li4.textContent = "ouch";
+// score.innerHTML = "change damnit";
 // btn2.textContent = "";
 
 //attributes
@@ -128,8 +111,9 @@ function timeStart() {
 	var poop = setInterval(function () {
 		secondsLeft--;
 		timerEl.textContent = "time remaining " + secondsLeft;
-		if (secondsLeft === 0) {
+		if (secondsLeft <= 0) {
 			clearInterval(poop);
+			alert("your score is " + scoreEl);
 		}
 	}, 1000);
 }
@@ -143,13 +127,33 @@ function addQuestions() {
 	// questBtn.text(letters[i]);
 
 	// $("#buttons").append(questBtn);
-	document.body.appendChild(listEl);
+	document.getElementById("generate").appendChild(listEl);
 	listEl.appendChild(li1);
 	listEl.appendChild(li2);
 	listEl.appendChild(li3);
 	listEl.appendChild(li4);
 }
+function loopQuestion(num) {
+	// for (var i = 0; i < questArr.length; i++) {
+	// console.log(i);
+	// var result = "";
+	// result = questArr[i];
+	// console.log(result);
+	// console.log(i);
+	start.innerHTML = questArr[num].question;
+	li1.innerHTML = questArr[num].answer1;
+	li2.innerHTML = questArr[num].answer2[0];
+	li3.innerHTML = questArr[num].answer2[1];
+	li4.innerHTML = questArr[num].answer2[2];
+	// return result;
+}
 
+function endGame() {
+	console.log(finalScore);
+	finalScore.style.display = "inline";
+	// finalScore.setAttribute
+	// ("style", "display: show;");
+}
 // function QuestionAssign() {
 // 	//console.log(questArr[0].question);
 // 	cheese.innerHTML = questArr[i].question;
@@ -161,40 +165,35 @@ function addQuestions() {
 
 // all event listener will go here
 btn1.addEventListener("click", function () {
+	console.log("im working");
 	timeStart();
-	loopQuestion();
 	addQuestions();
+	loopQuestion(questNum);
+	console.log("34");
+
+	// questNum++;
 	// QuestionAssign();
 	btn1.remove();
-});
 
-function loopQuestion() {
-	for (var i = 0; i < questArr.length; i++) {
-		var result = "";
-		result = questArr[i];
-		console.log(result);
-		cheese.innerHTML = questArr[i].question;
-		li1.innerHTML = questArr[i].answer1;
-		li2.innerHTML = questArr[i].answer2;
-		li3.innerHTML = questArr[i].answer3;
-		li4.innerHTML = questArr[i].answer4;
-		return result;
-	}
-}
-
-// $(".button").on("click, funciton()");
-
-listEl.addEventListener("click", function () {
-	console.log("on your way");
-		if (this. === true){
-	score += 1
-		}
-		else{
+	$(".button").on("click", function () {
+		console.log(this);
+		if (questNum === 9) {
+			endGame();
+			return;
+		} else if (this.innerHTML === "true") {
+			scoreEl += 1;
+			score.innerHTML = scoreEl;
+		} else {
 			secondsLeft -= 10;
 		}
-	loopQuestion();
-});
 
-console.log(questArr[0].key[0]);
+		questNum++;
+		loopQuestion(questNum);
+		console.log(questNum);
+	});
+});
+// endGame();
+
+// console.log(questArr[0].key[0]);
 // console.log(result);
 // loopQuestion();
