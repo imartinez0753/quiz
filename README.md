@@ -28,18 +28,15 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-```
-
-
 ## Contribution
 
-
 ## Test
-
-
 
 ## Questions
 
 https://github.com/imartinez0753
 imartinez0753@gmail.com
+
+```
+
 ```
