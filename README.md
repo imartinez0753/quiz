@@ -1,3 +1,45 @@
-# quiz
+# Quiz
 
-this is suppose to ask questions, compare answers have a timer and a score. None of it works go me
+quiz creator.
+
+## Table of Contents
+
+[Instruction](#instructions)
+[Usage](#usage)
+[contribution](#contribution)
+[test](#test)
+[gitHub](#questions)
+[e-mail](#questions)
+
+## Instructions
+
+## Usage
+
+GIVEN I am taking a code quiz
+
+WHEN I click the start button
+THEN a timer starts and I am presented with a question
+WHEN I answer a question
+THEN I am presented with another question
+WHEN I answer a question incorrectly
+THEN time is subtracted from the clock
+WHEN all questions are answered or the timer reaches 0
+THEN the game is over
+WHEN the game is over
+THEN I can save my initials and score
+
+```
+
+
+## Contribution
+
+
+## Test
+
+
+
+## Questions
+
+https://github.com/imartinez0753
+imartinez0753@gmail.com
+```
